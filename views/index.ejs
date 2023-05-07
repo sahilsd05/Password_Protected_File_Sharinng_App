@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+	<style>
+		.bgimg {
+			position: fixed;
+			top: 0;
+			left: 0;
+			min-width: 100%;
+			min-height: 100%;
+			z-index: -1;
+            opacity: 0.6;
+			transition: opacity 1s ease-in-out;
+		}
+
+        .form-container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			height: 90vh;
+		}
+
+
+        form {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			width: 30%;
+			padding: 20px;
+			background-color: #598d9e;
+			border-radius: 5px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+		}
+
+
+	</style>
+
+</head>
+<body>
+    
+    <% if(locals.fileLink != null) { %>
+        <div style="margin:auto;">
+            Your file is uploaded
+            <a href="<%= locals.fileLink %>"><%= locals.fileLink %></a>
+        </div>
+
+    <% } %>
+    <img class="bgimg" src="/transfer.png" alt="Transfer img">
+    <!-- <img src="C:/Users/sahil/OneDrive/Documents/Project/views/transfer.png" alt="Transfer img"> -->
+
+    <div class="form-container">
+
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        
+        <div>
+            <label for="file">File:</label>
+            <input type="file" id="file" name="file" required/>
+        </div>
+
+        <div>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password"/>
+        </div>
+        <button style="grid-column: span 2;" type="submit"> Share</button>
+
+    </form>
+    
+    </div>
+    
+</body>
+</html>
